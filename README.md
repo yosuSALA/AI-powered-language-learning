@@ -15,7 +15,7 @@ Plataforma web para aprender idiomas con **flashcards inteligentes**, **lectura 
 | Feature | Descripcion |
 |---------|-------------|
 | **🃏 English Flashcards** | 20+ tarjetas en 5 decks temáticos (anime, tech, gym, AWS, laptops). Click para voltear, escribe tu respuesta y recibe corrección con IA. |
-| **🤖 AI Coach** | Cuando escribes una respuesta en inglés, la IA la corrige, te da una puntuación, y te muestra una versión mejorada. Fallback local si no hay API disponible. |
+| **🤖 AI Coach** | Cuando escribes una respuesta, la IA la corrige, te da una puntuación, y te muestra una versión mejorada. Funciona con cualquier API compatible (OpenAI, Groq, Gemini, Ollama, etc.). |
 | **📚 Bilingual Reader** | Novelar ligeras (Mushoku Tensei, Re:Zero) parrafo a parrafo: inglés arriba, español abajo. Click en cualquier palabra para guardarla. |
 | **📖 Vocabulario** | Diccionario organizado por curso/tema. Marca palabras como conocidas, filtra las que faltan por aprender. |
 | **📤 Biblioteca** | Sube PDFs, EPUBs, TXT o Markdown para tu colección personal de material de estudio. |
@@ -167,22 +167,39 @@ Estructura de un capítulo:
 }
 ```
 
-### 4. Configurar el AI Coach (opcional)
+### 4. Configurar el AI Coach (recomendado)
 
-El coach funciona sin IA (fallback local), pero para correcciones inteligentes necesitas una API key.
+El coach funciona sin IA (fallback local), pero para correcciones inteligentes configura tu API desde la página de **Settings** (`/settings`).
 
-Crea un archivo `.env` en la raíz:
+**Quick setup** — selecciona un preset y pega tu API key:
 
-```env
-# Para usar con OpenCode Go
-OPENCODE_API_KEY=tu-api-key-aqui
+| Provider | Endpoint | Modelos populares | API Key |
+|----------|----------|-------------------|---------|
+| **OpenAI** | `api.openai.com/v1/chat/completions` | `gpt-4o-mini`, `gpt-4o` | `sk-...` |
+| **Groq** | `api.groq.com/openai/v1/chat/completions` | `llama-3.3-70b-versatile` | `gsk_...` |
+| **Gemini** | `generativelanguage.googleapis.com/v1beta/openai/chat/completions` | `gemini-2.0-flash` | `AIza...` |
+| **Ollama** (local) | `localhost:11434/v1/chat/completions` | `llama3.2`, `mistral` | No necesaria |
+| **DeepSeek** | `api.deepseek.com/v1/chat/completions` | `deepseek-chat` | `sk-...` |
 
-# Configuración del sitio
-SITE_URL=http://localhost:3000
-SITE_NAME=Mi Language Learning
+O edita `data/config.json` directamente:
+
+```json
+{
+  "ai": {
+    "apiEndpoint": "https://api.groq.com/openai/v1/chat/completions",
+    "apiKey": "gsk_tu_api_key_aqui",
+    "model": "llama-3.3-70b-versatile"
+  }
+}
 ```
 
-O configura tu propio proveedor editando `src/app/api/english-coach/route.ts`.
+### 5. Cambiar idiomas
+
+En **Settings** (`/settings`) selecciona:
+- **Aprendiendo** — el idioma que quieres aprender (EN, FR, DE, JP, etc.)
+- **Mi idioma** — tu idioma nativo (ES, PT, etc.)
+
+Esto afecta las correcciones del AI Coach (te explicara en tu idioma nativo).
 
 ---
 
@@ -202,7 +219,8 @@ npm run lint     # Linting con ESLint
 - **Frontend:** Next.js 16, React 19, Tailwind CSS v4
 - **Backend:** Next.js API Routes (Edge + Node.js)
 - **Database:** SQLite via better-sqlite3 (WAL mode)
-- **AI:** OpenCode CLI integration (fallback local si no hay API)
+- **AI:** API genérica compatible con OpenAI (OpenAI, Groq, Gemini, Ollama, DeepSeek, etc.)
+- **Config:** Settings page con presets, test de conexión, multi-idioma
 - **Deploy:** Compatible con Vercel, Docker, o cualquier VPS
 
 ---

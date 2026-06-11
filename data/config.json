@@ -1,0 +1,42 @@
+{
+  "ai": {
+    "provider": "openai-compatible",
+    "apiEndpoint": "https://api.openai.com/v1/chat/completions",
+    "apiKey": "",
+    "model": "gpt-4o-mini",
+    "maxTokens": 500,
+    "temperature": 0.3
+  },
+  "languages": {
+    "source": "en",
+    "target": "es",
+    "sourceName": "English",
+    "targetName": "Espanol"
+  },
+  "site": {
+    "name": "AI Language Learning",
+    "url": "http://localhost:3000"
+  },
+  "presets": {
+    "openai": {
+      "apiEndpoint": "https://api.openai.com/v1/chat/completions",
+      "model": "gpt-4o-mini"
+    },
+    "groq": {
+      "apiEndpoint": "https://api.groq.com/openai/v1/chat/completions",
+      "model": "llama-3.3-70b-versatile"
+    },
+    "gemini": {
+      "apiEndpoint": "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+      "model": "gemini-2.0-flash"
+    },
+    "ollama": {
+      "apiEndpoint": "http://localhost:11434/v1/chat/completions",
+      "model": "llama3.2"
+    },
+    "deepseek": {
+      "apiEndpoint": "https://api.deepseek.com/v1/chat/completions",
+      "model": "deepseek-chat"
+    }
+  }
+}
