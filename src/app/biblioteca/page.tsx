@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import type { Book } from "@/lib/types";
 import { BOOK_CATEGORIES } from "@/lib/types";
 import { BookUpload } from "@/components/BookUpload";
+import { useLocale } from "@/lib/useLocale";
 
 export default function BibliotecaPage() {
+  const { t } = useLocale();
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
@@ -26,7 +28,7 @@ export default function BibliotecaPage() {
   }
 
   async function handleDelete(id: number) {
-    if (!confirm("Eliminar este libro?")) return;
+    if (!confirm(t["library.empty"] + "?")) return;
     setDeleting(id);
     try {
       await fetch(`/api/books?id=${id}`, { method: "DELETE" });
@@ -72,10 +74,10 @@ export default function BibliotecaPage() {
     <div className="max-w-5xl">
       <div className="mb-8 animate-fade-in">
         <h1 className="text-4xl font-bold bg-gradient-to-r from-accent to-accent-purple bg-clip-text text-transparent">
-          Biblioteca
+          {t["library.title"]}
         </h1>
         <p className="text-muted mt-2 text-lg">
-          Sube libros y materiales para tu aprendizaje
+          {t["library.subtitle"]}
           <span className="text-accent/40 ml-2">/ Upload books & materials</span>
         </p>
         <p className="text-sm text-muted/50 mt-1">
@@ -97,7 +99,7 @@ export default function BibliotecaPage() {
                     : "bg-white/5 text-muted hover:bg-white/10"
                 }`}
               >
-                Todos ({books.length})
+                {t["vocab.all"]} ({books.length})
               </button>
               {BOOK_CATEGORIES.filter((c) => categoryCounts[c.id]).map((cat) => (
                 <button
@@ -118,7 +120,7 @@ export default function BibliotecaPage() {
           {loading ? (
             <div className="glass rounded-2xl p-12 text-center">
               <div className="w-8 h-8 border-2 border-accent/30 border-t-accent rounded-full animate-spin mx-auto" />
-              <p className="text-muted mt-3">Cargando...</p>
+              <p className="text-muted mt-3">{t["common.loading"]}</p>
             </div>
           ) : filteredBooks.length === 0 ? (
             <div className="glass rounded-2xl p-12 text-center animate-fade-in animate-delay-1">
@@ -126,14 +128,10 @@ export default function BibliotecaPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
               </svg>
               <p className="text-muted text-lg mb-2">
-                {filter === "all"
-                  ? "Tu biblioteca esta vacia"
-                  : "Sin libros en esta categoria"}
+                {t["library.empty"]}
               </p>
               <p className="text-sm text-accent/40">
-                {filter === "all"
-                  ? "Sube tu primer libro con el formulario"
-                  : "Upload books in this category"}
+                {t["library.upload"]}
               </p>
             </div>
           ) : (
@@ -195,12 +193,10 @@ export default function BibliotecaPage() {
           {/* Info box */}
           <div className="glass rounded-2xl p-5 mt-4 border-l-4 border-accent-purple">
             <h3 className="text-sm font-semibold text-accent-purple mb-2">
-              Para que sirve?
+              {t["settings.helpTitle"]}
             </h3>
             <p className="text-xs text-muted/70 leading-relaxed">
-              Sube libros de idiomas, novelas, y materiales de estudio.
-              Pideme que genere contenido sobre ellos: resumenes, ejercicios,
-              flashcards, o explicaciones.
+              {t["home.library.desc"]}
             </p>
             <p className="text-xs text-accent-purple/40 mt-2 leading-relaxed">
               Upload language books and ask me to generate content: summaries,

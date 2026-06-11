@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import type { Course } from "@/lib/types";
 import Link from "next/link";
 import coursesData from "../../../data/courses.json";
+import { useLocale } from "@/lib/useLocale";
 
 type TermEntry = {
   en: string;
@@ -16,6 +17,7 @@ type TermEntry = {
 };
 
 export default function VocabularioPage() {
+  const { t } = useLocale();
   const [courses, setCourses] = useState<any[]>([]);
   const [progress, setProgress] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(true);
@@ -55,16 +57,16 @@ export default function VocabularioPage() {
   }
 
   const seen = new Set<string>();
-  const uniqueTerms = allTerms.filter((t) => {
-    const key = `${t.en}|${t.courseId}`;
+  const uniqueTerms = allTerms.filter((term) => {
+    const key = `${term.en}|${term.courseId}`;
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
   });
 
-  const filteredTerms = uniqueTerms.filter(t => {
-    if (filter === "known") return progress[t.en];
-    if (filter === "unknown") return !progress[t.en];
+  const filteredTerms = uniqueTerms.filter(term => {
+    if (filter === "known") return progress[term.en];
+    if (filter === "unknown") return !progress[term.en];
     return true;
   });
 
@@ -97,10 +99,10 @@ export default function VocabularioPage() {
       <div className="mb-8 animate-fade-in flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-accent-green to-accent bg-clip-text text-transparent">
-            Vocabulario
+            {t["vocab.title"]}
           </h1>
           <p className="text-muted mt-2 text-lg">
-            Terminos clave en ingles y espanol
+            {t["vocab.subtitle"]}
             <span className="text-accent/40 ml-2">/ Key terms</span>
           </p>
         </div>
@@ -110,7 +112,7 @@ export default function VocabularioPage() {
             href="/vocabulario/flashcards"
             className="px-4 py-2 bg-accent text-background font-bold rounded-xl hover:scale-105 transition-all shadow-lg shadow-accent/20"
           >
-            Estudiar Flashcards
+            {t["nav.language"]} Flashcards
           </Link>
         </div>
       </div>
@@ -118,7 +120,7 @@ export default function VocabularioPage() {
       {/* Stats & Filters */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 animate-fade-in animate-delay-1">
         <div className="glass p-4 rounded-2xl">
-          <p className="text-xs text-muted mb-1 uppercase tracking-wider">Progreso Total</p>
+          <p className="text-xs text-muted mb-1 uppercase tracking-wider">{t["vocab.progress"]}</p>
           <div className="flex items-end gap-2">
             <span className="text-2xl font-bold">{Math.round((stats.known / (stats.total || 1)) * 100)}%</span>
             <span className="text-sm text-muted mb-1">{stats.known}/{stats.total} palabras</span>
@@ -126,7 +128,7 @@ export default function VocabularioPage() {
           <div className="w-full h-1.5 bg-white/5 rounded-full mt-2 overflow-hidden">
             <div 
               className="h-full bg-accent transition-all duration-500" 
-              style={{ width: `${(stats.known / (stats.total || 1)) * 100}%` }}
+              style={{ width: `${(stats.known / (stats.total || 1)) * 100}%` }} 
             />
           </div>
         </div>
@@ -136,26 +138,26 @@ export default function VocabularioPage() {
             onClick={() => setFilter("all")}
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${filter === "all" ? "bg-white/10 text-foreground" : "text-muted hover:bg-white/5"}`}
           >
-            Todos ({stats.total})
+            {t["vocab.all"]} ({stats.total})
           </button>
           <button 
             onClick={() => setFilter("unknown")}
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${filter === "unknown" ? "bg-accent/20 text-accent" : "text-muted hover:bg-white/5"}`}
           >
-            Por aprender ({stats.unknown})
+            {t["vocab.unknown"]} ({stats.unknown})
           </button>
           <button 
             onClick={() => setFilter("known")}
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${filter === "known" ? "bg-accent-green/20 text-accent-green" : "text-muted hover:bg-white/5"}`}
           >
-            Dominados ({stats.known})
+            {t["vocab.known"]} ({stats.known})
           </button>
         </div>
       </div>
 
       {filteredTerms.length === 0 ? (
         <div className="glass rounded-2xl p-12 text-center animate-fade-in animate-delay-2">
-          <p className="text-muted text-lg">No hay terminos que coincidan con el filtro.</p>
+          <p className="text-muted text-lg">{t["common.error"]}</p>
         </div>
       ) : (
         <div className="space-y-8 animate-fade-in animate-delay-2">

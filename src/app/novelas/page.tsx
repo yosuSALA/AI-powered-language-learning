@@ -1,26 +1,15 @@
+"use client";
+
 import Link from "next/link";
-import { createPageMetadata } from "@/lib/seo";
 import type { NovelIndex } from "@/lib/types";
 import indexData from "@/../data/novels/index.json";
+import { useLocale } from "@/lib/useLocale";
 
 const index = indexData as NovelIndex;
 
-export const metadata = createPageMetadata({
-  title: "Novelas ligeras para aprender ingles",
-  description:
-    "Visualizador bilingue (EN/ES) de novelas ligeras. Material de estudio para practicar vocabulario tecnico y narrativo.",
-  path: "/novelas",
-  keywords: [
-    "novelas ligeras",
-    "bilingual reader",
-    "light novel study",
-    "aprender ingles leyendo",
-  ],
-});
-
-export const dynamic = "force-static";
-
 export default function NovelasPage() {
+  const { t } = useLocale();
+
   return (
     <div className="max-w-6xl space-y-10">
       <header className="animate-fade-in">
@@ -28,12 +17,10 @@ export default function NovelasPage() {
           Bilingual reading
         </p>
         <h1 className="text-4xl font-bold bg-gradient-to-r from-accent-purple to-accent bg-clip-text text-transparent mt-2">
-          Novelas ligeras
+          {t["novels.title"]}
         </h1>
         <p className="text-muted mt-2 text-lg max-w-3xl">
-          Lee historias en ingles con acompanamiento en espanol, parrafo a parrafo. Cada capitulo
-          incluye vocabulario destacado y la opcion de guardar palabras con un clic para repasarlas
-          despues.
+          {t["novels.subtitle"]}
         </p>
       </header>
 
@@ -98,12 +85,12 @@ export default function NovelasPage() {
       </section>
 
       <section className="glass rounded-2xl p-6">
-        <h2 className="text-lg font-bold mb-2">Como usar el visualizador</h2>
+        <h2 className="text-lg font-bold mb-2">{t["novels.howToUse"]}</h2>
         <ol className="text-sm text-muted space-y-2 list-decimal pl-5">
-          <li>Elige una serie y abre un capitulo.</li>
-          <li>Lee el parrafo en ingles, luego la traduccion al espanol abajo.</li>
-          <li>Haz clic en cualquier palabra en ingles: se guarda automaticamente en tu vocabulario.</li>
-          <li>Aparece en el repaso matutino de vocabulario con prioridad alta.</li>
+          <li>{t["novels.step1"]}</li>
+          <li>{t["novels.step2"]}</li>
+          <li>{t["novels.step3"]}</li>
+          <li>{t["novels.step4"]}</li>
         </ol>
       </section>
     </div>
