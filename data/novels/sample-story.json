@@ -1,0 +1,46 @@
+{
+  "slug": "sample-story",
+  "disclaimer": "Texto de ejemplo para practicar lectura bilingue.",
+  "chapters": [
+    {
+      "id": "ch1",
+      "number": 1,
+      "title_en": "Arrival",
+      "title_es": "Llegada",
+      "volume": 1,
+      "reading_time_min": 5,
+      "source": "sample",
+      "paragraphs": [
+        { "id": "p1", "en": "The plane landed at Narita Airport at six in the morning. The sun was just starting to rise over the city.", "es": "El avion aterrizo en el aeropuerto de Narita a las seis de la manana. El sol apenas estaba comenzando a elevarse sobre la ciudad." },
+        { "id": "p2", "en": "I picked up my suitcase and walked toward the exit. The signs were all in Japanese, but I could read the English translations underneath.", "es": "Recogi mi maleta y camine hacia la salida. Los carteles estaban todos en japones, pero podia leer las traducciones en ingles debajo." },
+        { "id": "p3", "en": "The train to Tokyo was fast and clean. I watched the buildings pass by through the window, amazed by how organized everything was.", "es": "El tren hacia Tokio era rapido y limpio. Observe los edificios pasar por la ventana, asombrado por lo organizado que era todo." }
+      ],
+      "vocabulario_destacado": [
+        { "word": "landed", "translation": "aterrizo", "pos": "verb (past)" },
+        { "word": "suitcase", "translation": "maleta", "pos": "noun" },
+        { "word": "translations", "translation": "traducciones", "pos": "noun" },
+        { "word": "amazed", "translation": "asombrado", "pos": "adjective" }
+      ]
+    },
+    {
+      "id": "ch2",
+      "number": 2,
+      "title_en": "First Impressions",
+      "title_es": "Primeras impresiones",
+      "volume": 1,
+      "reading_time_min": 5,
+      "source": "sample",
+      "paragraphs": [
+        { "id": "p1", "en": "Tokyo was bigger than I expected. The streets were clean, and everyone moved with a clear purpose.", "es": "Tokio era mas grande de lo que esperaba. Las calles estaban limpias, y todos caminaban con un proposito claro." },
+        { "id": "p2", "en": "I found a small restaurant near the station. The menu was only in Japanese, so I used my phone to translate it.", "es": "Encontre un restaurante pequeno cerca de la estacion. El menu estaba solo en japones, asi que use mi telefono para traducirlo." },
+        { "id": "p3", "en": "The ramen was delicious. The chef smiled when I said 'oishii' in my broken Japanese.", "es": "El ramen estaba delicioso. El chef sonrio cuando dije 'oishii' en mi japones roto." }
+      ],
+      "vocabulario_destacado": [
+        { "word": "impressions", "translation": "impresiones", "pos": "noun" },
+        { "word": "purpose", "translation": "proposito", "pos": "noun" },
+        { "word": "translate", "translation": "traducir", "pos": "verb" },
+        { "word": "delicious", "translation": "delicioso", "pos": "adjective" }
+      ]
+    }
+  ]
+}

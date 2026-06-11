@@ -1,0 +1,19 @@
+{
+  "disclaimer_es": "Este material es para uso personal y educativo. Los textos son muestras cortas para practicar lectura bilingue.",
+  "disclaimer_en": "This material is for personal and educational use only. Texts are short samples for bilingual reading practice.",
+  "series": [
+    {
+      "slug": "sample-story",
+      "title_en": "A Day in Tokyo",
+      "title_es": "Un dia en Tokio",
+      "author": "Sample Author",
+      "description_es": "Una historia corta sobre un dia en Tokio. Perfecta para practicar vocabulario de viajes y vida cotidiana.",
+      "genre": ["slice of life", "travel"],
+      "study_level": "A2-B1",
+      "chapters": 2,
+      "volumes": 1,
+      "language_primary": "en",
+      "language_secondary": "es"
+    }
+  ]
+}

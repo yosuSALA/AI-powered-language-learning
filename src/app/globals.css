@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0e1a;
+  --foreground: #e2e8f0;
+  --card: #111827;
+  --card-hover: #1e293b;
+  --accent: #38bdf8;
+  --accent-green: #4ade80;
+  --accent-yellow: #fbbf24;
+  --accent-red: #f87171;
+  --accent-purple: #a78bfa;
+  --accent-orange: #fb923c;
+  --muted: #64748b;
+  --border: #1e293b;
+  --glow: rgba(56, 189, 248, 0.15);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-accent: var(--accent);
+  --color-accent-green: var(--accent-green);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-red: var(--accent-red);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-orange: var(--accent-orange);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-glow: var(--glow);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Animated gradient background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(167, 139, 250, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(74, 222, 128, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glass card effect */
+.glass {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-hover:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(56, 189, 248, 0.2);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.05);
+}
+
+/* Card shine effect on hover */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.03) 55%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.card-shine:hover::after {
+  transform: translateX(100%);
+}
+
+/* Glow border */
+.glow-border {
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.1), 0 0 15px -3px rgba(56, 189, 248, 0.1);
+}
+.glow-border:hover {
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.3), 0 0 20px -3px rgba(56, 189, 248, 0.15);
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Progress ring animation */
+@keyframes progress-fill {
+  from { stroke-dashoffset: 251.2; }
+}
+
+.progress-ring {
+  animation: progress-fill 1.5s ease-out;
+}
+
+/* Fade in animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in-up 0.4s ease-out both;
+}
+
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+
+/* Pulse glow for active items */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+  50% { box-shadow: 0 0 12px 2px rgba(56, 189, 248, 0.15); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Upload dropzone */
+.dropzone {
+  border: 2px dashed var(--border);
+  transition: all 0.3s ease;
+}
+.dropzone:hover,
+.dropzone.active {
+  border-color: var(--accent);
+  background: rgba(56, 189, 248, 0.05);
+}
+
+/* Tag pill */
+.tag-pill {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(167, 139, 250, 0.1));
+  border: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+/* Stat card gradient borders */
+.stat-green { border-left: 3px solid var(--accent-green); }
+.stat-yellow { border-left: 3px solid var(--accent-yellow); }
+.stat-purple { border-left: 3px solid var(--accent-purple); }
+.stat-muted { border-left: 3px solid var(--muted); }
+.stat-blue { border-left: 3px solid var(--accent); }

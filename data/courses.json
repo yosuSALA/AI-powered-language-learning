@@ -1,0 +1,47 @@
+[
+  {
+    "id": "english-basics",
+    "name": "English Basics",
+    "nameEs": "Ingles basico",
+    "description": "Core English vocabulary and phrases for beginners",
+    "descriptionEs": "Vocabulario y frases esenciales de ingles para principiantes",
+    "url": "",
+    "vocabulary": [
+      { "en": "hello", "es": "hola", "definition": "A greeting", "definitionEn": "Used to greet someone" },
+      { "en": "please", "es": "por favor", "definition": "Polite request marker", "definitionEn": "Used to make a request polite" },
+      { "en": "thank you", "es": "gracias", "definition": "Expression of gratitude", "definitionEn": "Used to show appreciation" },
+      { "en": "excuse me", "es": "disculpe", "definition": "Polite way to get attention", "definitionEn": "Used to politely interrupt or pass by" },
+      { "en": "good morning", "es": "buenos dias", "definition": "Morning greeting", "definitionEn": "Greeting used before noon" }
+    ]
+  },
+  {
+    "id": "english-travel",
+    "name": "Travel English",
+    "nameEs": "Ingles para viajar",
+    "description": "Essential phrases for traveling and tourism",
+    "descriptionEs": "Frases esenciales para viajar y turismo",
+    "url": "",
+    "vocabulary": [
+      { "en": "airport", "es": "aeropuerto", "definition": "Place where planes depart/arrive", "definitionEn": "Facility for air travel" },
+      { "en": "boarding pass", "es": "tarjeta de embarque", "definition": "Document to board a plane", "definitionEn": "Ticket needed to board an aircraft" },
+      { "en": "reservation", "es": "reserva", "definition": "A booked arrangement", "definitionEn": "A booking at a hotel or restaurant" },
+      { "en": "currency exchange", "es": "casa de cambio", "definition": "Place to exchange money", "definitionEn": "Office where you swap currencies" },
+      { "en": "tourist information", "es": "informacion turistica", "definition": "Office with travel info", "definitionEn": "Center providing local travel guidance" }
+    ]
+  },
+  {
+    "id": "english-tech",
+    "name": "Tech English",
+    "nameEs": "Ingles tecnico",
+    "description": "Vocabulary for technology and programming",
+    "descriptionEs": "Vocabulario de tecnologia y programacion",
+    "url": "",
+    "vocabulary": [
+      { "en": "algorithm", "es": "algoritmo", "definition": "Step-by-step procedure", "definitionEn": "A finite sequence of instructions" },
+      { "en": "database", "es": "base de datos", "definition": "Organized data store", "definitionEn": "System for storing structured data" },
+      { "en": "deploy", "es": "desplegar", "definition": "Publish code to production", "definitionEn": "Release software to a live environment" },
+      { "en": "repository", "es": "repositorio", "definition": "Code storage location", "definitionEn": "A place where code is stored and versioned" },
+      { "en": "debug", "es": "depurar", "definition": "Find and fix errors", "definitionEn": "Process of identifying and resolving bugs" }
+    ]
+  }
+]
